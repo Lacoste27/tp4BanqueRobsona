@@ -1,2 +1,5 @@
 org\mbds\banque\JakartaRestConfiguration.class
+org\mbds\banque\config\Init.class
+org\mbds\banque\service\GestionnaireCompte.class
+org\mbds\banque\entities\CompteBancaire.class
 org\mbds\banque\resources\JakartaEE10Resource.class
