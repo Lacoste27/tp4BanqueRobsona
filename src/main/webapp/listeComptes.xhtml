@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/template/template.xhtml">
+            <ui:param name="titre" value="Liste de tous les comptes"/>
+
+            <ui:define name="content">
+                <h:form>
+                    <p:dataTable value="#{listeComptes.allComptes}"
+                                 var="item" paginator="true" rows="4"
+                                 rowsPerPageTemplate="2,4,8,10"
+                                 sortMode="multiple"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column headerText="Nom" sortOrder="desc" filterBy="#{item.nom}">
+                            <h:outputText value="#{item.nom}"/>
+                        </p:column>
+                        <p:column headerText="Solde" sortBy="#{item.solde}" sortPriority="1" filterBy="#{item.solde}">
+                            <h:outputText value="#{item.solde}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
