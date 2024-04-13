@@ -45,6 +45,19 @@ public class GestionnaireCompte {
         this.em.persist(c);
     }
 
+    @Transactional
+    public CompteBancaire update(CompteBancaire compteBancaire) {
+        return em.merge(compteBancaire);
+    }
+
+    @Transactional
+    public void transferer(CompteBancaire source, CompteBancaire destination, int montant) {
+        source.retirer(montant);
+        destination.deposer(montant);
+        update(source);
+        update(destination);
+    }
+
     public List<CompteBancaire> getAllComptes() {
         String query = "SELECT c FROM CompteBancaire c";
         TypedQuery<CompteBancaire> typeQuery = em.createQuery(query, CompteBancaire.class);
@@ -55,5 +68,9 @@ public class GestionnaireCompte {
         String query = "SELECT count(c) FROM CompteBancaire c";
         TypedQuery<Long> typeQuery = em.createQuery(query, Long.class);
         return typeQuery.getSingleResult();
+    }
+
+    public CompteBancaire getCompteById(int id) {
+        return em.find(CompteBancaire.class, id);
     }
 }

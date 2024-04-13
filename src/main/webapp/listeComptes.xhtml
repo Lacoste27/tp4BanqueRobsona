@@ -24,8 +24,13 @@
                         <p:column headerText="Nom" sortOrder="desc" filterBy="#{item.nom}">
                             <h:outputText value="#{item.nom}"/>
                         </p:column>
-                        <p:column headerText="Solde" sortBy="#{item.solde}" sortPriority="1" filterBy="#{item.solde}">
-                            <h:outputText value="#{item.solde}"/>
+                        <p:column style="text-align:right;" sortBy="#{item.solde}" sortPriority="1" filterBy="#{item.solde}">
+                            <f:facet name="header">
+                                <h:outputText value="Solde"/>
+                            </f:facet>
+                            <h:outputText value="#{item.solde}">
+                                <f:convertNumber pattern="###,###,##0"/>
+                            </h:outputText>
                         </p:column>
                     </p:dataTable>
                 </h:form>
