@@ -5,4 +5,5 @@ org\mbds\banque\config\ConfigJSF.class
 org\mbds\banque\jsf\Transfert.class
 org\mbds\banque\config\Init.class
 org\mbds\banque\entities\CompteBancaire.class
+org\mbds\banque\jsf\Util.class
 org\mbds\banque\resources\JakartaEE10Resource.class

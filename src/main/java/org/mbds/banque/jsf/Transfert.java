@@ -8,7 +8,9 @@ import jakarta.inject.Named;
 import jakarta.enterprise.context.Dependent;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
+import java.io.Serializable;
 import org.mbds.banque.entities.CompteBancaire;
 import org.mbds.banque.service.GestionnaireCompte;
 
@@ -17,8 +19,8 @@ import org.mbds.banque.service.GestionnaireCompte;
  * @author robsona
  */
 @Named(value = "transfert")
-@Dependent
-public class Transfert {
+@ViewScoped
+public class Transfert implements Serializable {
 
     @Inject
     private GestionnaireCompte gestionnaire;
@@ -82,30 +84,32 @@ public class Transfert {
 
         if (source == null) {
             erreur = true;
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Compte inexistante", "L'id ne correspond à aucune compte");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        } 
+            Util.messageErreur("L'id ne correspond à aucune compte", String.format("L'id numero %s n'existe pas !",sourceId));
+        } else {
+            if (source.getSolde() < montant) {
+                erreur = true;
+                Util.messageErreur("Le transfert ne peut être effectuer, solde insufisant", "Solde insufisante");
+            }
 
-        if (source.getSolde() < montant) {
-            erreur = true;
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Solde insufisante", "Le transfert ne peut être effectuer, solde insufisant");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
-        
+
         if (destination == null) {
             erreur = true;
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Compte inexistante", "L'id ne correspond à aucune compte");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+            Util.messageErreur("L'id ne correspond à aucune compte", String.format("L'id numero %s n'existe pas !",sourceId));
+        }
+
+        if (montant == 0) {
+            erreur = true;
+            Util.messageErreur("Le montant doit être supérieur à zero !", "Erreur montant");
         }
 
         if (erreur) {
-            return "transfert";
+            return null;
         }
 
         gestionnaire.transferer(source, destination, montant);
 
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Transfert effectué", "Le transfert a été effectué");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        Util.addFlashInfoMessage("Le tranfert a été effectué !");
 
         return "listeComptes?faces-redirect=true";
     }
