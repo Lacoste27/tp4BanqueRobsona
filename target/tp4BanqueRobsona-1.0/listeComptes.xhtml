@@ -19,7 +19,8 @@
                                  sortMode="multiple"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
                         <p:column headerText="Id">
-                            <h:outputText value="#{item.id}"/>
+                            <h:link outcome="retraitDepot?idCompte=#{item.id}" 
+                                    value="#{item.id}"/>
                         </p:column>
                         <p:column headerText="Nom" sortOrder="desc" filterBy="#{item.nom}">
                             <h:outputText value="#{item.nom}"/>

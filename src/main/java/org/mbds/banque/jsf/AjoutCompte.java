@@ -62,23 +62,20 @@ public class AjoutCompte implements Serializable {
 
     public String ajout() {
         boolean erreur = false;
-        
-        if(solde <= 0) {
+
+        if (solde <= 0) {
             erreur = true;
             Util.messageErreur("Le solde doit être supérieur à zero !", "Solde erroné");
         }
-        
-        if(erreur){
+
+        if (erreur) {
             return null;
         }
-        
-        
-        
-        
+
         CompteBancaire compte = new CompteBancaire(nom, solde);
-        
+
         this.gestionnaire.creerCompte(compte);
-        
+
         String successMessage = String.format("Le compte de %s a été crée avec success !", compte.getNom());
         Util.addFlashInfoMessage(successMessage);
 

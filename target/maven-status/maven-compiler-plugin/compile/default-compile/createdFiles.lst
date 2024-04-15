@@ -1,4 +1,5 @@
 org\mbds\banque\jsf\ListeComptes.class
+org\mbds\banque\jsf\Transaction.class
 org\mbds\banque\JakartaRestConfiguration.class
 org\mbds\banque\service\GestionnaireCompte.class
 org\mbds\banque\config\ConfigJSF.class
