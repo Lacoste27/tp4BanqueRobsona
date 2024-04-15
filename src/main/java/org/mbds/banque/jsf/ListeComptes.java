@@ -48,5 +48,14 @@ public class ListeComptes implements Serializable {
      */
     public ListeComptes() {
     }
+    
+    public String delete(CompteBancaire compte){
+        this.gestionnaire.supprimerCompte(compte);
+        
+        String successMessage = String.format("Le compte de %s a été supprimé avec success !", compte.getNom());
+        Util.addFlashInfoMessage(successMessage);
+
+        return "listeComptes?faces-redirect=true";
+    }
 
 }

@@ -14,7 +14,7 @@
             <ui:define name="content">
                 <h:form>
                     <p:dataTable value="#{listeComptes.allComptes}"
-                                 var="item" paginator="true" rows="4"
+                                 var="item" paginator="true" rows="8"
                                  rowsPerPageTemplate="2,4,8,10"
                                  sortMode="multiple"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
@@ -32,6 +32,14 @@
                             <h:outputText value="#{item.solde}">
                                 <f:convertNumber pattern="###,###,##0"/>
                             </h:outputText>
+                        </p:column>
+                        <p:column width="100">
+                            <f:facet name="header">
+                                <h:outputText value="Operations" />
+                            </f:facet>
+                            <h:commandLink action="#{listeComptes.delete(item)}" title="Supprimer le compte de #{item.nom}" >
+                                <h:graphicImage name="img/del.png" />
+                            </h:commandLink>
                         </p:column>
                     </p:dataTable>
                 </h:form>
