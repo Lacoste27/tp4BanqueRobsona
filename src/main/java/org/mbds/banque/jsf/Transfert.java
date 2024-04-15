@@ -108,8 +108,10 @@ public class Transfert implements Serializable {
         }
 
         gestionnaire.transferer(source, destination, montant);
+        
+        String successMessage = String.format("Le transferé de %s a %s d'une montant de %n a été effectué avec success ! ", source.getNom(), destination.getNom(), montant);
 
-        Util.addFlashInfoMessage("Le tranfert a été effectué !");
+        Util.addFlashInfoMessage(successMessage);
 
         return "listeComptes?faces-redirect=true";
     }
