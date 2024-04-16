@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+        <ui:composition template="./WEB-INF/template/template.xhtml">
+
+            <ui:define name="metadata">
+                <f:metadata>
+                    <f:viewParam name="idCompte" value="#{modificationCompte.idCompte}" required="true"/>
+                    <f:viewAction action="#{modificationCompte.load}" />
+                </f:metadata>
+            </ui:define>
+
+            <ui:param name="titre" value="Détails d'un compte"/>
+
+            <ui:define name="content">
+                <h:form>
+                    <h2>Détails du compte #{modificationCompte.compte.nom}</h2>
+                    <p:panelGrid columns="2">
+                        Nom :
+                        <p:inputText id="nom" value="#{modificationCompte.compte.nom}"/>
+
+                        Solde :
+                        <p:inputText id="solde" value="#{modificationCompte.compte.solde}" readonly="true"/>
+                    </p:panelGrid>
+                    <h:commandButton action="#{modificationCompte.modifier()}" value="Enregistrer" />
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

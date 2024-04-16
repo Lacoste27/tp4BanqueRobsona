@@ -89,13 +89,12 @@ public class Transfert implements Serializable {
             if (source.getSolde() < montant) {
                 erreur = true;
                 Util.messageErreur("Le transfert ne peut être effectuer, solde insufisant", "Solde insufisante");
-            }
-
+            } 
         }
 
         if (destination == null) {
             erreur = true;
-            Util.messageErreur("L'id ne correspond à aucune compte", String.format("L'id numero %s n'existe pas !",sourceId));
+            Util.messageErreur("L'id ne correspond à aucune compte", String.format("L'id numero %s n'existe pas !",destinataireId));
         }
 
         if (montant == 0) {
@@ -109,7 +108,7 @@ public class Transfert implements Serializable {
 
         gestionnaire.transferer(source, destination, montant);
         
-        String successMessage = String.format("Le transferé de %s a %s d'une montant de %n a été effectué avec success ! ", source.getNom(), destination.getNom(), montant);
+        String successMessage = String.format("Le transferé de %s a %s d'une montant de %s a été effectué avec success ! ", source.getNom(), destination.getNom(), montant);
 
         Util.addFlashInfoMessage(successMessage);
 

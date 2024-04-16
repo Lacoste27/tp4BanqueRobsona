@@ -15,17 +15,17 @@
                 <h:form id="form">
                     <p:panelGrid columns="3">
                         ID compte source : 
-                        <p:inputText id="source" size="3" value="#{transfert.sourceId}" required="true"
+                        <p:inputText id="source" size="6" value="#{transfert.sourceId}" required="true"
                                      converterMessage="L'id est un nombre entier" />
                         <p:message for="source" />
 
                         ID compte destination : 
-                        <p:inputText id="destination" size="3" value="#{transfert.destinataireId}" required="true"
+                        <p:inputText id="destination" size="6" value="#{transfert.destinataireId}" required="true"
                                      converterMessage="L'id est un nombre entier" />
                         <p:message for="destination" />
 
                         Montant : 
-                        <p:inputText id="montant" size="3" value="#{transfert.montant}" required="true"
+                        <p:inputText id="montant" value="#{transfert.montant}" required="true"
                                      converterMessage="Le montant est un nombre entier" />
                         <p:message for="montant" />
                     </p:panelGrid>

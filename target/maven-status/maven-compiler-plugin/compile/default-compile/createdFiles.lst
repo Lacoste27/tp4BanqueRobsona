@@ -1,11 +1,15 @@
 org\mbds\banque\jsf\ListeComptes.class
 org\mbds\banque\jsf\Transaction.class
+org\mbds\banque\exception\SoldeInsuffisant.class
 org\mbds\banque\JakartaRestConfiguration.class
 org\mbds\banque\service\GestionnaireCompte.class
+org\mbds\banque\exception\CompteNonTrouve.class
+org\mbds\banque\exception\SoldeErrone.class
+org\mbds\banque\jsf\Util.class
 org\mbds\banque\config\ConfigJSF.class
+org\mbds\banque\jsf\ModificationCompte.class
 org\mbds\banque\jsf\Transfert.class
 org\mbds\banque\config\Init.class
 org\mbds\banque\jsf\AjoutCompte.class
 org\mbds\banque\entities\CompteBancaire.class
-org\mbds\banque\jsf\Util.class
 org\mbds\banque\resources\JakartaEE10Resource.class
