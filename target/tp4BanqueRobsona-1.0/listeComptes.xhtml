@@ -40,8 +40,15 @@
                             <h:commandLink action="#{listeComptes.delete(item)}" title="Supprimer le compte de #{item.nom}" >
                                 <h:graphicImage name="img/del.png" />
                             </h:commandLink>
-                            <h:link outcome="modificationCompte?idCompte=#{item.id}" title="Modification" >
-                                <h:outputText value="Modifier" />
+                            <h:link outcome="modificationCompte?idCompte=#{item.id}" value="Modifier" title="Modification" >
+                            </h:link>
+                        </p:column>
+                        <p:column width="100">
+                            <f:facet name="header">
+                                <h:outputText value="Historique opérations" />
+                            </f:facet>
+                            <h:link outcome="operations" value="Détails" title="Historique de modifications" >
+                                <f:param value="#{item.id}" name="idCompte" ></f:param>
                             </h:link>
                         </p:column>
                     </p:dataTable>
