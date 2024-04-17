@@ -5,6 +5,7 @@ org\mbds\banque\JakartaRestConfiguration.class
 org\mbds\banque\service\GestionnaireCompte.class
 org\mbds\banque\exception\CompteNonTrouve.class
 org\mbds\banque\exception\SoldeErrone.class
+org\mbds\banque\entities\OperationBancaire.class
 org\mbds\banque\jsf\Util.class
 org\mbds\banque\config\ConfigJSF.class
 org\mbds\banque\jsf\ModificationCompte.class

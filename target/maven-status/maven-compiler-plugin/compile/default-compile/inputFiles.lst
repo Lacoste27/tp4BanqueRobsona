@@ -1,6 +1,7 @@
 C:\Users\robso\OneDrive - Université Côte d'Azur\Etude\Master2\Serveurs d’application et environnements de développement\TP\TP 4\tp4BanqueRobsona\src\main\java\org\mbds\banque\config\ConfigJSF.java
 C:\Users\robso\OneDrive - Université Côte d'Azur\Etude\Master2\Serveurs d’application et environnements de développement\TP\TP 4\tp4BanqueRobsona\src\main\java\org\mbds\banque\config\Init.java
 C:\Users\robso\OneDrive - Université Côte d'Azur\Etude\Master2\Serveurs d’application et environnements de développement\TP\TP 4\tp4BanqueRobsona\src\main\java\org\mbds\banque\entities\CompteBancaire.java
+C:\Users\robso\OneDrive - Université Côte d'Azur\Etude\Master2\Serveurs d’application et environnements de développement\TP\TP 4\tp4BanqueRobsona\src\main\java\org\mbds\banque\entities\OperationBancaire.java
 C:\Users\robso\OneDrive - Université Côte d'Azur\Etude\Master2\Serveurs d’application et environnements de développement\TP\TP 4\tp4BanqueRobsona\src\main\java\org\mbds\banque\exception\CompteNonTrouve.java
 C:\Users\robso\OneDrive - Université Côte d'Azur\Etude\Master2\Serveurs d’application et environnements de développement\TP\TP 4\tp4BanqueRobsona\src\main\java\org\mbds\banque\exception\SoldeErrone.java
 C:\Users\robso\OneDrive - Université Côte d'Azur\Etude\Master2\Serveurs d’application et environnements de développement\TP\TP 4\tp4BanqueRobsona\src\main\java\org\mbds\banque\exception\SoldeInsuffisant.java
