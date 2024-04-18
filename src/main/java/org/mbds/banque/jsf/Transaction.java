@@ -12,6 +12,7 @@ import jakarta.faces.validator.ValidatorException;
 import jakarta.inject.Named;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
+import jakarta.persistence.OptimisticLockException;
 import java.io.Serializable;
 import org.mbds.banque.entities.CompteBancaire;
 import org.mbds.banque.service.GestionnaireCompte;
@@ -116,23 +117,27 @@ public class Transaction implements Serializable {
     }
 
     public String transaction() {
+        try {
+            switch (type) {
+                case "retrait":
+                    this.compte.retirer(montant);
+                    break;
+                case "depot":
+                    this.compte.deposer(montant);
+                    break;
+            }
 
-        switch (type) {
-            case "retrait":
-                this.compte.retirer(montant);
-                break;
-            case "depot":
-                this.compte.deposer(montant);
-                break;
+            this.gestionnaire.update(compte);
+
+            String successMessage = String.format("Le transaction de %s a été effectué avec success !", compte.getNom());
+            Util.addFlashInfoMessage(successMessage);
+
+            return "listeComptes?faces-redirect=true";
+        } catch (OptimisticLockException lockException) {
+            String message = String.format("Le compte de %s a été modifié ou supprimé !", this.getCompte().getNom());
+            Util.messageErreur(message, message);
+            return null;
         }
-
-        this.gestionnaire.update(compte);
-
-        String successMessage = String.format("Le transaction de %s a été effectué avec success !", compte.getNom());
-        Util.addFlashInfoMessage(successMessage);
-
-        return "listeComptes?faces-redirect=true";
-
     }
 
 }
