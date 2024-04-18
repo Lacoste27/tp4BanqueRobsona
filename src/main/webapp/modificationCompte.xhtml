@@ -19,11 +19,11 @@
             <ui:param name="titre" value="Détails d'un compte"/>
 
             <ui:define name="content">
+                <h1>Détails du compte #{modificationCompte.compte.nom}</h1>
                 <h:form>
-                    <h2>Détails du compte #{modificationCompte.compte.nom}</h2>
                     <p:panelGrid columns="2">
                         Nom :
-                        <p:inputText id="nom" value="#{modificationCompte.compte.nom}"/>
+                        <p:inputText id="nom" value="#{modificationCompte.nom}"/>
 
                         Solde :
                         <p:inputText id="solde" value="#{modificationCompte.compte.solde}" readonly="true"/>

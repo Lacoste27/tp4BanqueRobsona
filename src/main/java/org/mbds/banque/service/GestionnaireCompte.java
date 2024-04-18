@@ -64,7 +64,7 @@ public class GestionnaireCompte {
     }
 
     public List<CompteBancaire> getAllComptes() {
-        String query = "SELECT c FROM CompteBancaire c";
+        String query = "SELECT DISTINCT compte FROM CompteBancaire compte JOIN FETCH compte.operations operations";
         TypedQuery<CompteBancaire> typeQuery = em.createQuery(query, CompteBancaire.class);
         return typeQuery.getResultList();
     }

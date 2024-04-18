@@ -12,6 +12,8 @@
 
 
             <ui:define name="content">
+                <h1>Ajout d'un nouveau compte</h1>
+
                 <h:form id="form">
                     <p:panelGrid columns="3">
                         Nom : 
@@ -19,7 +21,7 @@
                         <p:message for="nom" />
 
                         Solde : 
-                        <p:inputText id="solde" size="3" value="#{ajoutCompte.solde}" required="true"
+                        <p:inputText id="solde" size="30" value="#{ajoutCompte.solde}" required="true"
                                      converterMessage="Le solde est un nombre entier" />
                         <p:message for="solde" />
                     </p:panelGrid>

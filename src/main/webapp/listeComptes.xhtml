@@ -12,6 +12,7 @@
             <ui:param name="titre" value="Liste de tous les comptes"/>
 
             <ui:define name="content">
+                <h1>Liste des comptes</h1>
                 <h:form>
                     <p:dataTable value="#{listeComptes.allComptes}"
                                  var="item" paginator="true" rows="8"
@@ -43,7 +44,7 @@
                             <h:link outcome="modificationCompte?idCompte=#{item.id}" value="Modifier" title="Modification" >
                             </h:link>
                         </p:column>
-                        <p:column width="100">
+                       <p:column width="100">
                             <f:facet name="header">
                                 <h:outputText value="Historique opérations" />
                             </f:facet>

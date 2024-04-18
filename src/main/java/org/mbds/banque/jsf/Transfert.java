@@ -79,27 +79,28 @@ public class Transfert implements Serializable {
 
     public String transferer() {
         boolean erreur = false;
+        
         CompteBancaire source = gestionnaire.getCompteById(sourceId);
         CompteBancaire destination = gestionnaire.getCompteById(destinataireId);
-
-        if (source == null) {
-            erreur = true;
-            Util.messageErreur("L'id ne correspond à aucune compte", String.format("L'id numero %s n'existe pas !",sourceId));
-        } else {
-            if (source.getSolde() < montant) {
-                erreur = true;
-                Util.messageErreur("Le transfert ne peut être effectuer, solde insufisant", "Solde insufisante");
-            } 
-        }
-
-        if (destination == null) {
-            erreur = true;
-            Util.messageErreur("L'id ne correspond à aucune compte", String.format("L'id numero %s n'existe pas !",destinataireId));
-        }
 
         if (montant == 0) {
             erreur = true;
             Util.messageErreur("Le montant doit être supérieur à zero !", "Erreur montant");
+        }
+
+        if (destination == null) {
+            erreur = true;
+            Util.messageErreur("L'id ne correspond à aucune compte", String.format("L'id numero %s n'existe pas !", destinataireId),"form:destination");
+        }
+
+        if (source == null) {
+            erreur = true;
+            Util.messageErreur("L'id ne correspond à aucune compte", String.format("L'id numero %s n'existe pas !", sourceId),"form:source");
+        } else {
+            if (source.getSolde() < montant) {
+                erreur = true;
+                Util.messageErreur("Le transfert ne peut être effectuer, solde insufisant", String.format("Le transfert ne peut être effectuer, solde insufisant, solde disponible %s", source.getSolde()));
+            }
         }
 
         if (erreur) {
@@ -107,9 +108,8 @@ public class Transfert implements Serializable {
         }
 
         gestionnaire.transferer(source, destination, montant);
-        
-        String successMessage = String.format("Le transferé de %s a %s d'une montant de %s a été effectué avec success ! ", source.getNom(), destination.getNom(), montant);
 
+        String successMessage = String.format("Le transferé de %s a %s d'une montant de %s a été effectué avec success ! ", source.getNom(), destination.getNom(), montant);
         Util.addFlashInfoMessage(successMessage);
 
         return "listeComptes?faces-redirect=true";
